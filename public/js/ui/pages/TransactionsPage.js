@@ -152,7 +152,7 @@ class TransactionsPage {
                 <div class="transaction__info">
                   <h4 class="transaction__title">${item.name}</h4>
                   <!-- дата -->
-                  <div class="transaction__date">${formatDate(item.created_at)}</div>
+                  <div class="transaction__date">${this.formatDate(item.created_at)}</div>
                 </div>
               </div>
               <div class="col-md-3">
@@ -182,9 +182,7 @@ class TransactionsPage {
     content.textContent = "";
 
     data.forEach(item => {
-      content.textContent += this.getTransactionHTML(item);
+      content.insertAdjacentHTML("beforeend", this.getTransactionHTML(item));
     });
-
-    // content.insertAdjacentHTML("beforeend", data.forEach(item => this.getTransactionHTML(item)));
   }
 }

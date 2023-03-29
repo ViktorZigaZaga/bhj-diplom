@@ -4,22 +4,24 @@
  * */
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
-    const formData = new FormData();
+    let formData = new FormData();
     xhr.responseType = "json";
+    let requestUrl = options.url;
     
     if (options.method === "GET") {
-        options.url += "?";
+        requestUrl += "?";
         for (let key in options.data) {
-            options.url += `${key}=${options.data[key]}&`
+            requestUrl += `${key}=${options.data[key]}&`;
         }
-    } else {
-        Array.from(options.data).forEach(key => {
+        requestUrl = requestUrl.slice(0, -1);
+    } else { 
+        for (let key in options.data) {
             formData.append(key, options.data[key]);
-        });   
+        }
     }
 
     try {
-      xhr.open(options.method, options.url);
+      xhr.open(options.method, requestUrl);
       xhr.send(formData);
     }
     catch (err) {
@@ -27,6 +29,6 @@ const createRequest = (options = {}) => {
       options.callback(err);
     }
 
-    xhr.addEventListener("load", options.callback(null, xhr.response));
-    xhr.addEventListener("error", options.callback(xhr.statusText, null));
+    xhr.addEventListener("load", () => options.callback(null, xhr.response));
+    xhr.addEventListener("error", () => options.callback(xhr.statusText, null));
 };

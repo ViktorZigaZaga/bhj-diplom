@@ -7,61 +7,10 @@
       "id": "1"
     },
     {
-      "id": "1r8mbi4ldva36c7"
-    },
-    {
-      "id": "1r8m7msldva4l98"
-    },
-    {
-      "id": "1r8mkeoldva4pw3"
-    },
-    {
-      "id": "1r8m30cldva5326"
-    },
-    {
-      "id": "1r8m1mkldva7o6p"
-    },
-    {
-      "id": "1r8mmfwldva7tvo"
-    },
-    {
-      "id": "1r8mkucldva8w21"
-    },
-    {
-      "id": "1r8mk0wldva984s"
-    },
-    {
-      "id": "1r8m9vcldvaacdl"
-    },
-    {
-      "id": "1r8mheoldvacoge"
-    },
-    {
-      "id": "1r8m5scldvacpu7"
-    },
-    {
-      "id": "1r8mf6cldvacqag"
-    },
-    {
-      "id": "1r8mg6kldvacqp3"
-    },
-    {
-      "id": "1r8m5iwldvacr60"
-    },
-    {
-      "id": "1r8mltoldvacrun"
-    },
-    {
-      "id": "1r8m608ldvagho8"
-    },
-    {
-      "id": "1r8mmbcldvagmyk"
-    },
-    {
-      "id": "1r8m4w0ldvapoq1"
-    },
-    {
-      "id": "1r8mn8cldvar5gc"
+      "name": "Виктор",
+      "email": "bassa555@mail.ru",
+      "password": "ishim",
+      "id": "1r8mkgklf4ylro3"
     }
   ],
   "accounts": [
@@ -79,6 +28,16 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "Виктор",
+      "user_id": "1",
+      "id": "1r8m178lf4y0u87"
+    },
+    {
+      "name": "Viktor",
+      "user_id": "1",
+      "id": "1r8mf30lftmj0ta"
     }
   ],
   "transactions": [
@@ -216,6 +175,69 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "1r8m5islftm9bz1",
+      "type": "income",
+      "name": "Аутлук для телефона",
+      "sum": 500,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-03-29T11:41:27.132Z"
+    },
+    {
+      "id": "1r8m4q8lftmhn49",
+      "type": "income",
+      "name": "Аутлук для телефона",
+      "sum": 500,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-03-29T11:47:54.824Z"
+    },
+    {
+      "id": "1r8mh5wlftmi84p",
+      "type": "income",
+      "name": "Аутлук для телефона",
+      "sum": 500,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-03-29T11:48:22.056Z"
+    },
+    {
+      "id": "1r8m6e0lftmir6r",
+      "type": "expense",
+      "name": "хлеб",
+      "sum": 500,
+      "account_id": "2",
+      "user_id": "1",
+      "created_at": "2023-03-29T11:48:46.754Z"
+    },
+    {
+      "id": "1r8mfsslftmk1fm",
+      "type": "expense",
+      "name": "Аутлук для телефона",
+      "sum": 1200,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-03-29T11:49:46.689Z"
+    },
+    {
+      "id": "1r8mfeslftml6ab",
+      "type": "income",
+      "name": "Аутлук для телефона",
+      "sum": 1200,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-03-29T11:50:39.634Z"
+    },
+    {
+      "id": "1r8m23olftn3cv0",
+      "type": "income",
+      "name": "Аутлук для телефона",
+      "sum": 500,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-03-29T12:04:47.963Z"
     }
   ]
 }
