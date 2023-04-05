@@ -63,8 +63,6 @@ class AccountsWidget {
           response.data.forEach(item => {
             this.renderItem(item);
           });
-        } else {
-          alert(err);
         }
       });
     }

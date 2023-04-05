@@ -33,10 +33,17 @@ class TransactionsPage {
    * TransactionsPage.removeAccount соответственно
    * */
   registerEvents() {
-    document.querySelector(".remove-account").addEventListener("click", this.removeAccount);
-    document.querySelectorAll(".transaction__remove").forEach(btn => {
-      btn.addEventListener("click", this.removeTransaction(btn.dataset.id));
-    })
+    this.element.addEventListener("click", (e) => {
+      e.preventDefault();
+      let btnRemoveAccount = e.target.closest(".remove-account");
+      let btnRemoveTransaction = e.target.closest(".transaction__remove");
+      if(btnRemoveAccount) {
+        this.removeAccount();
+      }
+      if(btnRemoveTransaction) {
+        this.removeTransaction(btnRemoveTransaction.dataset.id);
+      }
+    });
   }
 
   /**
@@ -51,15 +58,13 @@ class TransactionsPage {
   removeAccount() {
     if(this.lastOptions) {
       if(confirm("Вы действительно хотите удалить счёт?")) {
-        Account.remove(this.lastOptions.account_id, (err, response) => {
+        Account.remove({id : this.lastOptions.account_id}, (err, response) => {
           if (response && response.success) {
+            this.clear();
             App.updateWidgets();
             App.updateForms();
-          } else {
-            alert(err);
           }
         });
-        this.clear();
       }
     } 
   }
@@ -72,11 +77,9 @@ class TransactionsPage {
    * */
   removeTransaction( id ) {
     if (confirm("Вы действительно хотите удалить транзакцию?")) {
-      Transaction.remove(id, (err, response) => {
-        if (response.success) {
+      Transaction.remove({id}, (err, response) => {
+        if (response && response.success) {
           App.update();
-        } else {
-          alert(err);
         }
       });
     }
@@ -97,16 +100,12 @@ class TransactionsPage {
     Account.get(options.account_id, (err, response) => {
       if (response && response.success) {
         this.renderTitle(response.data.name);
-      } else {
-        alert(err);
-      }
+      } 
     });
 
     Transaction.list(options, (err, response) => {
       if (response && response.success) {
         this.renderTransactions(response.data);
-      }else {
-        alert(err);
       }
     });
   }
@@ -134,9 +133,13 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date){
-    const formatDate = new Date(date);
-    const month = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
-    return `${formatDate.getDate()}${month[formatDate.getMonth()]}${formatDate.getFullYear()} г. в ${formatDate.getHours()}:${formatDate.getMinutes()}`;
+    return new Date(date).toLocaleString('ru', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    });
   }
 
   /**
@@ -175,9 +178,6 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
-    if (!data.length) {
-      return;
-    }
     const content = this.element.querySelector(".content");
     content.textContent = "";
 
